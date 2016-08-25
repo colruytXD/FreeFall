@@ -19,8 +19,14 @@ public class CharacterController : MonoBehaviour {
 
 	}
 	
+    void FixedUpdate()
+    {
+        MoveDown();
+    }
+
 	void Update () 
 	{
+
 	    //TEMP
         if(Input.GetKeyDown(KeyCode.D))
         {
@@ -84,5 +90,13 @@ public class CharacterController : MonoBehaviour {
             currentZ--;
         }
         
+    }
+
+    public void MoveDown()
+    {
+        Vector3 from = transform.position;
+        Vector3 to = transform.position -= new Vector3(0, .4f, 0);
+
+        transform.position = Vector3.Lerp(from, to, 100);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager_ShowGameOverScreen : MonoBehaviour {
 
@@ -25,5 +26,6 @@ public class GameManager_ShowGameOverScreen : MonoBehaviour {
     {
         //TODO: Add mechanic
         Debug.Log("Diededed");
+        SceneManager.LoadScene(0);
     }
 }
