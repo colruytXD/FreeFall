@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine.SceneManagement;
 
-public class Gen : MonoBehaviour {
+public class Generate_Platforms : MonoBehaviour {
 
     [SerializeField]
     private Transform platform;
@@ -14,7 +14,7 @@ public class Gen : MonoBehaviour {
     private Vector3 distanceBetweenPlatform;
 
     [SerializeField]
-    private int maxPlatformAmount, minPlatformAmount;
+    private int maxPlatformAmount, minPlatformAmount, amountOfPlatformsToSpawn;
     private int platformsSpawned;
 
 
@@ -43,51 +43,55 @@ public class Gen : MonoBehaviour {
 
 	}
 
-    void GeneratePlatform()
+    public void GeneratePlatform()
     { 
-        maxPlatformAmount = spawnPositions.Length;
         bool[] bools = new bool[maxPlatformAmount];
 
+
         //Generates an array of booleans
-        for(int i = 0; i < bools.Length; i++)
+
+        //Make sure not 9 bools are true
+        int trueCount = 0;
+        int falseCount = 0;
+        for (int i = 0; i < bools.Length; i++)
         {
-            float randomValue = Random.value;
-            if(randomValue > .5)
+            //Picks random number between 0 and 1. If less than half => false, if more then half => true
+            if(Random.value > .5)
             {
                 bools[i] = true;
+                trueCount++;
             }
             else
             {
                 bools[i] = false;
-            }
-        }
-
-        //Make sure not 9 bools are true
-        int trueCount = 0 ;
-        int falseCount = 0;
-
-        for(int i = 0; i < bools.Length; i++)
-        {
-            if(bools[i] == true)
-            {
-                trueCount++;
-            }
-            if(bools[i] == false)
-            {
                 falseCount++;
             }
         }
+        while (trueCount >= maxPlatformAmount)
+        {         
+                int rand = Random.Range(0, bools.Length);
+                if (bools[rand] == true)
+                {
+                    bools[rand] = false;
+                    trueCount--;
+                }
+        }     
 
-        if(trueCount == maxPlatformAmount)
+        while (falseCount >= minPlatformAmount)
         {
-            Debug.Log("Generated 9 floors, fixing...");
-            bools[Random.Range(0, maxPlatformAmount)] = false;
+            int rand = Random.Range(0, bools.Length);
+            if(bools[rand]== false)
+            {
+                bools[rand] = true;
+                falseCount--;
+            }
         }
 
+
         //Spawns the platform
-        for(int i = 0; i < spawnPositions.Length; i++)
+        for(int i = 0; i < bools.Length; i++)
         {
-            if(bools[i])
+            if(bools[i] == true)
             {
                 Instantiate(platform, spawnPositions[i] + distanceBetweenPlatform * platformsSpawned, Quaternion.identity);
             }
@@ -95,7 +99,7 @@ public class Gen : MonoBehaviour {
 
         platformsSpawned++;
 
-        if(platformsSpawned < 100)
+        if(platformsSpawned < amountOfPlatformsToSpawn)
         {
             GeneratePlatform();
         }

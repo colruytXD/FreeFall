@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class GameManager_ShowGameOverScreen : MonoBehaviour {
 
     private GameManager_Master gameManagerMaster;
-
+    [SerializeField]
+    private GameObject player,gen;
 	void OnEnable() 
 	{
 		SetInitialReferences();
@@ -26,6 +27,8 @@ public class GameManager_ShowGameOverScreen : MonoBehaviour {
     {
         //TODO: Add mechanic
         Debug.Log("Diededed");
-        SceneManager.LoadScene(0);
+        player.transform.position = new Vector3(0, 1040, 0);
+        gen.GetComponent<Generate_Platforms>().GeneratePlatform();
+
     }
 }
