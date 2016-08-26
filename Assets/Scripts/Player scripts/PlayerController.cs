@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     private int maxAmtOfXPos, maxAmtOfZPos, maxAmtOfXNeg, maxAmtOfZNeg;
     private int currentX, currentZ;
 
+    private float acceleratorMultiplier;
+
 	void OnEnable() 
 	{
 	}
