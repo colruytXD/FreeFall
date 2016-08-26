@@ -3,32 +3,25 @@ using System.Collections;
 
 public class Generate_DuplicateWall : MonoBehaviour {
 
-    [SerializeField]
     private Transform wall;
 
-	void OnEnable() 
-	{
-		SetInitialReferences();
+    void OnEnable()
+    {
+        wall = transform;
+        //GenerateWalls();
+    }
+
+    void Start()
+    {
         GenerateWalls();
-	}
-
-	void OnDisable() 
-	{
-
-	}
-	
-	void Update () 
-	{
-	
-	}
-
-	void SetInitialReferences() 
-	{
-
-	}
+    }
 
     void GenerateWalls()
     {
-        Instantiate(wall, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        if(transform.position.y < 10000)
+        {
+
+            Instantiate(wall, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        }
     }
 }

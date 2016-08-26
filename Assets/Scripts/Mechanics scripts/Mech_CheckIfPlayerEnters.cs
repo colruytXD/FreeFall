@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Mech_CheckIfPlayerEnters : MonoBehaviour {
 
-    private GameManager_Master gameManagerMaster;
+    private Mech_Master mechMaster;
 
 	void OnEnable() 
 	{
@@ -12,12 +12,15 @@ public class Mech_CheckIfPlayerEnters : MonoBehaviour {
 
 	void SetInitialReferences() 
 	{
-        gameManagerMaster = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager_Master>();
-	}
+        mechMaster = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Mech_Master>();
+    }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider col)
     {
-        gameManagerMaster.CallEventPlayerDie();
+        if(col.transform.CompareTag("Player"))
+        {
+            mechMaster.CallEventPointIncrease();
+        }
     }
 
 }

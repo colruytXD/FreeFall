@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Generate_Platforms : MonoBehaviour {
 
     [SerializeField]
-    private Transform platform;
+    private Transform platform, platformPoint;
     [SerializeField]
     private Vector3[] spawnPositions;
     [SerializeField]
@@ -94,6 +94,10 @@ public class Generate_Platforms : MonoBehaviour {
             if(bools[i] == true)
             {
                 Instantiate(platform, spawnPositions[i] + distanceBetweenPlatform * platformsSpawned, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(platformPoint, spawnPositions[i] + distanceBetweenPlatform * platformsSpawned, Quaternion.identity);
             }
         }
 

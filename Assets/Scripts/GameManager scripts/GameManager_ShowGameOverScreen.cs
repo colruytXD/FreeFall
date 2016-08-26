@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 public class GameManager_ShowGameOverScreen : MonoBehaviour {
 
     private GameManager_Master gameManagerMaster;
+
     [SerializeField]
-    private GameObject player,gen;
+    private GameObject gameOverUI;
+
 	void OnEnable() 
 	{
 		SetInitialReferences();
@@ -25,10 +27,7 @@ public class GameManager_ShowGameOverScreen : MonoBehaviour {
 
     void ShowGameOverScreen()
     {
-        //TODO: Add mechanic
-        Debug.Log("Diededed");
-        player.transform.position = new Vector3(0, 1040, 0);
-        gen.GetComponent<Generate_Platforms>().GeneratePlatform();
-
+        Debug.Log("Player died, showing Game over screen");
+        gameOverUI.SetActive(true);
     }
 }

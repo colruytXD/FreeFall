@@ -6,6 +6,9 @@ public class GameManager_Master : MonoBehaviour {
     public delegate void GeneralEventHandler();
 
     public event GeneralEventHandler EventPlayerDie;
+    public event GeneralEventHandler EventRestartLevel;
+    public event GeneralEventHandler EventGoToMainMenu;
+    public event GeneralEventHandler EventTogglePause;
 
     public void CallEventPlayerDie()
     {
@@ -13,5 +16,29 @@ public class GameManager_Master : MonoBehaviour {
         {
             EventPlayerDie();
         } 
+    }
+
+    public void CallEventRestartLevel()
+    {
+        if(EventRestartLevel != null)
+        {
+            EventRestartLevel();
+        }
+    }
+
+    public void CallEventGoToMainMenu()
+    {
+        if(EventGoToMainMenu != null)
+        {
+            EventGoToMainMenu();
+        }
+    }
+
+    public void CallEventTogglePause()
+    {
+        if(EventTogglePause != null)
+        {
+            EventTogglePause();
+        }
     }
 }
