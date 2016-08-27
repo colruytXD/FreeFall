@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour {
     private int maxAmtOfXPos, maxAmtOfZPos, maxAmtOfXNeg, maxAmtOfZNeg;
     private int currentX, currentZ;
 
-    private float acceleratorMultiplier;
+    public float acceleratorMultiplier;
 
 	void OnEnable() 
 	{
+
 	}
 
 	void OnDisable() 
@@ -29,8 +30,8 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 
-	    //TEMP
-        if(Input.GetKeyDown(KeyCode.Z))
+        //TEMP
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             MovePosX();
         }
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour {
     public void MoveDown()
     {
         Vector3 from = transform.position;
-        Vector3 to = transform.position -= new Vector3(0, .2f, 0);
+        Vector3 to = transform.position -= new Vector3(0, .2f + acceleratorMultiplier, 0);
 
         transform.position = Vector3.Lerp(from, to, 100);
     }

@@ -11,16 +11,6 @@ public class MapGen_RandomColor : MonoBehaviour {
         GiveRandomColor();
 	}
 
-	void OnDisable() 
-	{
-
-	}
-	
-	void Update () 
-	{
-	
-	}
-
 	void SetInitialReferences() 
 	{
         myMat = GetComponent<Material>();
@@ -28,6 +18,15 @@ public class MapGen_RandomColor : MonoBehaviour {
 
     void GiveRandomColor()
     {
-        GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1);
+        //int i = Random.Range(0, 2);
+        //if(i == 0)
+        //{
+        //    GetComponent<Renderer>().material.color = Color.black;
+        //}
+        //else
+        //{
+        //    GetComponent<Renderer>().material.color = Color.white;
+        //}
+        GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1f);
     }
 }

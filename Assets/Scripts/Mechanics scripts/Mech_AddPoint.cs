@@ -9,6 +9,9 @@ public class Mech_AddPoint : MonoBehaviour {
     private Text txtPoints;
 
     public int currentPoints;
+    [SerializeField]
+    private GameObject playerGo;
+    private PlayerController playerController;
 
     void OnEnable()
     {
@@ -24,11 +27,13 @@ public class Mech_AddPoint : MonoBehaviour {
     void SetInitialReferences()
     {
         mechMaster = GetComponent<Mech_Master>();
+        playerController = playerGo.GetComponent<PlayerController>();
     }
 
     void AddPoint()
     {
         currentPoints += 1;
         txtPoints.text = currentPoints.ToString();
+        playerController.acceleratorMultiplier += 0.003f;
     }
 }
