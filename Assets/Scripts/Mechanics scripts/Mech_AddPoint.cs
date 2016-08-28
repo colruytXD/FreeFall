@@ -35,5 +35,6 @@ public class Mech_AddPoint : MonoBehaviour {
         currentPoints += 1;
         txtPoints.text = currentPoints.ToString();
         playerController.acceleratorMultiplier += 0.003f;
+        mechMaster.CallEventCheckForNewHighscore();
     }
 }
