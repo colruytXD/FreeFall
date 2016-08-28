@@ -10,6 +10,7 @@ public class GameManager_Master : MonoBehaviour {
     public event GeneralEventHandler EventGoToMainMenu;
     public event GeneralEventHandler EventTogglePause;
     public event GeneralEventHandler EventGoToGameScene;
+    public event GeneralEventHandler EventToggleMusic;
 
     public void CallEventPlayerDie()
     {
@@ -48,6 +49,14 @@ public class GameManager_Master : MonoBehaviour {
         if(EventGoToGameScene != null)
         {
             EventGoToGameScene();
+        }
+    }
+
+    public void ToggleMusic()
+    {
+        if(EventToggleMusic != null)
+        {
+            EventToggleMusic();
         }
     }
 }
