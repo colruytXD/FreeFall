@@ -6,7 +6,7 @@ public class GameManager_ToggleScoreText : MonoBehaviour {
     private GameManager_Master gameManagerMaster;
 
     [SerializeField]
-    private GameObject txtScore, txtHighScore;
+    private GameObject txtScore;
 
     void OnEnable()
     {

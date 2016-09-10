@@ -52,7 +52,7 @@ public class GameManager_Master : MonoBehaviour {
         }
     }
 
-    public void ToggleMusic()
+    public void CallEventToggleMusic()
     {
         if(EventToggleMusic != null)
         {

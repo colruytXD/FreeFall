@@ -11,16 +11,6 @@ public class PlayerController : MonoBehaviour {
     private int currentX, currentZ;
 
     public float acceleratorMultiplier;
-
-	void OnEnable() 
-	{
-
-	}
-
-	void OnDisable() 
-	{
-
-	}
 	
     void FixedUpdate()
     {
@@ -29,7 +19,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () 
 	{
-
         //TEMP
         if (Input.GetKeyDown(KeyCode.Z))
         {

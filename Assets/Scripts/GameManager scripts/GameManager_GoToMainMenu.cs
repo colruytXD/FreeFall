@@ -26,6 +26,6 @@ public class GameManager_GoToMainMenu : MonoBehaviour {
 
     void LoadScene()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadSceneAsync(sceneToLoad);
     }
 }

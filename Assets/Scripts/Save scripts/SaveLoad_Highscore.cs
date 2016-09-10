@@ -32,7 +32,7 @@ public class SaveLoad_Highscore : MonoBehaviour {
 
     void Save()
     {
-        FileStream file = File.Create(Application.persistentDataPath /*+ "/Save"*/ + "/Highscore.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/Highscore.dat");
         BinaryFormatter bf = new BinaryFormatter();
 
         SaveAble_Highscore saveAbleHighscoreData = new SaveAble_Highscore();
@@ -44,9 +44,9 @@ public class SaveLoad_Highscore : MonoBehaviour {
 
     void Load()
     {
-        if(File.Exists(Application.persistentDataPath /*+ "/Save" */+ "/Highscore.dat"))
+        if(File.Exists(Application.persistentDataPath + "/Highscore.dat"))
         {
-            FileStream file = File.Open(Application.persistentDataPath/* + "/Save"*/ + "/Highscore.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath+ "/Highscore.dat", FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
 
             SaveAble_Highscore saveAbleHighscoreData = new SaveAble_Highscore();

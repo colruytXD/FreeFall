@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameManager_SetupApp : MonoBehaviour {
 
-	void OnEnable() 
+	void Start() 
 	{
         Setup();
 	}
@@ -11,5 +11,6 @@ public class GameManager_SetupApp : MonoBehaviour {
     void Setup()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Screen.fullScreen = false;
     }
 }

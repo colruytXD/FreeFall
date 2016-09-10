@@ -8,7 +8,6 @@ public class Generate_DuplicateWall : MonoBehaviour {
     void OnEnable()
     {
         wall = transform;
-        //GenerateWalls();
     }
 
     void Start()

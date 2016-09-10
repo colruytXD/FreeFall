@@ -27,6 +27,6 @@ public class GameManager_GoToGameScene : MonoBehaviour {
 
     void GoToGameScene()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadSceneAsync(sceneToLoad);
     }
 }

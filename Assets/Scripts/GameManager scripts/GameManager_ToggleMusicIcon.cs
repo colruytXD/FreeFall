@@ -11,17 +11,15 @@ public class GameManager_ToggleMusicIcon : MonoBehaviour {
     [SerializeField]
     private Button btnToggleSound;
 
-    private bool soundOn = true;
-
 	void OnEnable() 
 	{
 		SetInitialReferences();
-        gameManagerMaster.EventToggleMusic += ToggleMusicIcon;
+        gameManagerMaster.EventToggleMusic += CheckToggleMusicIcon;
 	}
 
 	void OnDisable() 
 	{
-        gameManagerMaster.EventToggleMusic -= ToggleMusicIcon;
+        gameManagerMaster.EventToggleMusic -= CheckToggleMusicIcon;
     }
 
 	void SetInitialReferences() 
@@ -29,10 +27,9 @@ public class GameManager_ToggleMusicIcon : MonoBehaviour {
         gameManagerMaster = GetComponent<GameManager_Master>();
 	}
 
-    void ToggleMusicIcon()
+    public void CheckToggleMusicIcon()
     {
-        soundOn = !soundOn;
-        if(!soundOn)
+        if(btnToggleSound.image.sprite == imgSoundOn)
         {
             btnToggleSound.image.sprite = imgSoundOff;
         }

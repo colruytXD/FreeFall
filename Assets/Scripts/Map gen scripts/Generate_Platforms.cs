@@ -17,42 +17,17 @@ public class Generate_Platforms : MonoBehaviour {
     private int maxPlatformAmount, minPlatformAmount, amountOfPlatformsToSpawn;
     private int platformsSpawned;
 
-
-
     void OnEnable() 
 	{
-		SetInitialReferences();
         GeneratePlatform();
-	}
-
-	void OnDisable() 
-	{
-
-	}
-	
-	void Update () 
-	{
-	    if(Input.GetKeyDown(KeyCode.A))
-        {
-            SceneManager.LoadScene(0);
-        }
-	}
-
-	void SetInitialReferences() 
-	{
-
 	}
 
     public void GeneratePlatform()
     { 
         bool[] bools = new bool[maxPlatformAmount];
-
-
-        //Generates an array of booleans
-
-        //Make sure not 9 bools are true
         int trueCount = 0;
         int falseCount = 0;
+
         for (int i = 0; i < bools.Length; i++)
         {
             //Picks random number between 0 and 1. If less than half => false, if more then half => true
@@ -67,6 +42,8 @@ public class Generate_Platforms : MonoBehaviour {
                 falseCount++;
             }
         }
+
+        //Checks if there aren't too many platform spawn instructions
         while (trueCount >= maxPlatformAmount)
         {         
                 int rand = Random.Range(0, bools.Length);
@@ -77,6 +54,7 @@ public class Generate_Platforms : MonoBehaviour {
                 }
         }     
 
+        //Checks if there are enough platforms
         while (falseCount >= minPlatformAmount)
         {
             int rand = Random.Range(0, bools.Length);
@@ -88,7 +66,7 @@ public class Generate_Platforms : MonoBehaviour {
         }
 
 
-        //Spawns the platform
+        //Spawns the platform or pointPlatform
         for(int i = 0; i < bools.Length; i++)
         {
             if(bools[i] == true)
@@ -103,6 +81,7 @@ public class Generate_Platforms : MonoBehaviour {
 
         platformsSpawned++;
 
+        //Spawns as long the amount of spawned isn't over limit
         if(platformsSpawned < amountOfPlatformsToSpawn)
         {
             GeneratePlatform();
