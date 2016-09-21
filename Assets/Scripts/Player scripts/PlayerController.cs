@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 fingerStartPos = Vector2.zero;
 
     private bool isSwipe = false;
-    private float minSwipeDist = 50.0f;
+    private float minSwipeDist = 20.0f;
     private float maxSwipeTime = 0.5f;
 
 
