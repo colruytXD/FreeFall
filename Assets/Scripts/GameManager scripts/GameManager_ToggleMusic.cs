@@ -5,9 +5,6 @@ public class GameManager_ToggleMusic : MonoBehaviour {
 
     private GameManager_Master gameManagerMaster;
 
-    [SerializeField]
-    private GameObject musicSource;
-
 	void OnEnable() 
 	{
 		SetInitialReferences();
@@ -21,11 +18,11 @@ public class GameManager_ToggleMusic : MonoBehaviour {
 
 	void SetInitialReferences() 
 	{
-        gameManagerMaster = GetComponent<GameManager_Master>();
+        gameManagerMaster = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager_Master>();
 	}
 
     void ToggleSound()
     {
-        musicSource.SetActive(!musicSource.activeSelf);
+        GetComponent<AudioSource>().enabled = !GetComponent<AudioSource>().enabled;
     }
 }
