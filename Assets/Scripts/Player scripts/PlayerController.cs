@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -11,7 +12,12 @@ public class PlayerController : MonoBehaviour {
     private int currentX, currentZ;
 
     public float acceleratorMultiplier;
-	
+
+    [SerializeField]
+    private Sprite empty, sweepLeft, sweepRight, sweepUp, sweepDown;
+    [SerializeField]
+    private GameObject panelSweep;
+
     void FixedUpdate()
     {
         MoveDown();
@@ -19,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () 
 	{
+#if UNITY_EDITOR
         //TEMP
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -39,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         {
             MoveMinZ();
         }
-
+#endif
         CheckInput();
     }
 
@@ -50,8 +57,7 @@ public class PlayerController : MonoBehaviour {
         {
             transform.Translate(amountToMove, 0, 0, Space.Self);
             currentX++;
-        }
-        
+        } 
     }
 
     //Moves character on the x axis (Negative, -)
@@ -62,7 +68,6 @@ public class PlayerController : MonoBehaviour {
             transform.Translate(-amountToMove, 0, 0, Space.Self);
             currentX--;
         }
-        
     }
 
     //Moves character on the z axis (Positive, +)
@@ -82,8 +87,7 @@ public class PlayerController : MonoBehaviour {
         {
             transform.Translate(0, 0, -amountToMove, Space.Self);
             currentZ--;
-        }
-        
+        }        
     }
 
     public void MoveDown()
@@ -165,14 +169,11 @@ public class PlayerController : MonoBehaviour {
                                 else {
                                     MoveMinX();
                                 }
-                            }
-
+                            }                        
                         }
-
                         break;
                 }
             }
         }
-
     }
 }

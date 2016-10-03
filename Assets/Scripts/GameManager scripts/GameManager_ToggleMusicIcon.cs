@@ -8,6 +8,8 @@ public class GameManager_ToggleMusicIcon : MonoBehaviour {
 
     [SerializeField]
     private Sprite imgSoundOn, imgSoundOff;
+    [SerializeField]
+    private Button musicButton;
 
     private bool soundOn = true;
 
@@ -15,7 +17,7 @@ public class GameManager_ToggleMusicIcon : MonoBehaviour {
 	{
         SetInitialReferences();
         gameManagerMaster.EventToggleMusic += ToggleMusicIcon;
-	}
+    }
 
 	void OnDisable() 
 	{
@@ -32,11 +34,13 @@ public class GameManager_ToggleMusicIcon : MonoBehaviour {
         soundOn = !soundOn;
         if(!soundOn)
         {
-            GetComponent<Button>().image.sprite = imgSoundOff;
+            musicButton.image.sprite = imgSoundOff;
         }
         else
         {
-            GetComponent<Button>().image.sprite = imgSoundOn;
+            musicButton.image.sprite = imgSoundOn;
         }
+
+        Debug.Log("Toggled sprite");
     }
 }

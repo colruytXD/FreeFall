@@ -1,8 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine.SceneManagement;
 
 public class Generate_Platforms : MonoBehaviour {
 
@@ -16,6 +12,8 @@ public class Generate_Platforms : MonoBehaviour {
     [SerializeField]
     private int maxPlatformAmount, minPlatformAmount, amountOfPlatformsToSpawn;
     private int platformsSpawned;
+
+
 
     void OnEnable() 
 	{
